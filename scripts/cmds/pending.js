@@ -4,11 +4,11 @@ const path = require("path");
 module.exports = {
   config: {
     name: "pending",
-    aliases: ["p"],
+    aliases: ["p","pen"],
     version: "1.2",
     author: "Xemon",
     countDown: 5,
-    role: 2,
+    role: 0,
     shortDescription: "accept pending message",
     longDescription: "Approve or refuse pending threads/users",
     category: "utility",
