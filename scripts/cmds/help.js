@@ -1,149 +1,170 @@
-const fs = require("fs-extra");
+const fs = require("fs");
 const path = require("path");
-const https = require("https");
+const { getPrefix } = global.utils;
+const { commands, aliases } = global.GoatBot;
 
 module.exports = {
   config: {
     name: "help",
-    aliases: ["menu", "commands"],
-    version: "4.8",
-    author: "NeoKEX",
-    shortDescription: "Show all available commands",
-    longDescription: "Displays a clean and premium-styled categorized list of commands.",
-    category: "system",
-    guide: "{pn}help [command name]"
+    version: "3.2",
+    author: "𝗕𝘂𝘁𝘁𝗲𝗿𝗳𝗹𝘆",
+    countDown: 5,
+    role: 0,
+    description: "View command information with enhanced interface",
+    category: "info",
+    guide: {
+      en: "{pn} [command] - View command details\n{pn} all - View all commands\n{pn} c [category] - View commands in category"
+    }
   },
 
-  onStart: async function ({ message, args, prefix }) {
-    const allCommands = global.GoatBot.commands;
-    const categories = {};
+  langs: {
+    en: {
+      helpHeader: "╭━━━ 👑 𝖧𝖠 𝖡𝖨 𝖡𝖠 👑🪽  ━━╮\n"
+                + "┃ 🔰 Total Commands: {total}\n"
+                + "┃ 📥 Use: {prefix}help [command]\n"
+                + "╰━━━━━━━━━━━━━━━━━━━━╯\n",
+      categoryHeader: "\n🗃 𝗖𝗔𝗧𝗘𝗚𝗢𝗥𝗬: {category}\n"
+                    + "➪▭▭▭▭▭▭▭▭▭✰\n",
+      commandItem: "🔸 {name}\n",
+      categoryFooter: "➪▭▭▭▭▭▭▭▭▭▭▭✰\n",
+      helpFooter: "\n💡 Tip: Type '{prefix}help [command]' for detailed info.",
+      commandInfo: "╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮\n"
+                 + "┃         📜 𝗖𝗢𝗠𝗠𝗔𝗡𝗗 𝗗𝗘𝗧𝗔𝗜𝗟𝗦 📜        ┃\n"
+                 + "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫\n"
+                 + "┃ Name       : {name}\n"
+                 + "┃ Description: {description}\n"
+                 + "┃ Category   : {category}\n"
+                 + "┃ Aliases    : {aliases}\n"
+                 + "┃ Version    : {version}\n"
+                 + "┃ Permission : {role}\n"
+                 + "┃ Cooldown   : {countDown}s\n"
+                 + "┃ Use Prefix : {usePrefix}\n"
+                 + "┃ Author     : {author}\n"
+                 + "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫",
+      usageHeader: "┃ 🛠️ USAGE GUIDE\n",
+      usageBody: "┃ {usage}\n",
+      usageFooter: "╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯",
+      commandNotFound: "❌ Command '{command}' not found! Please check again.",
+      doNotHave: "None",
+      roleText0: "👥 Everyone",
+      roleText1: "👑 Group Admins",
+      roleText2: "⚡ Bot Admins"
+    }
+  },
 
-    const emojiMap = {
-      ai: "➥", "ai-image": "➥", group: "➥", system: "➥",
-      fun: "➥", owner: "➥", config: "➥", economy: "➥",
-      media: "➥", "18+": "➥", tools: "➥", utility: "➥",
-      info: "➥", image: "➥", game: "➥", admin: "➥",
-      rank: "➥", boxchat: "➥", others: "➥"
+  onStart: async function({ message, args, event, threadsData, role }) {
+    const { threadID } = event;
+    const prefix = getPrefix(threadID);
+    const commandName = args[0]?.toLowerCase();
+
+    const replyWithAutoUnsend = async (msg) => {
+      await message.reply(msg); // Auto unsend removed
     };
 
-    const cleanCategoryName = (text) => {
-      if (!text) return "others";
-      return text
-        .normalize("NFKD")
-        .replace(/[^\w\s-]/g, "")
-        .replace(/\s+/g, " ")
-        .trim()
-        .toLowerCase();
-    };
+    if (commandName === 'c' && args[1]) {
+      const categoryArg = args[1].toUpperCase();
+      const commandsInCategory = [];
 
-    // Group commands by category
-    for (const [name, cmd] of allCommands) {
-      const cat = cleanCategoryName(cmd.config.category);
-      if (!categories[cat]) categories[cat] = [];
-      categories[cat].push(cmd.config.name);
-    }
+      for (const [name, cmd] of commands) {
+        if (cmd.config.role > 1 && role < cmd.config.role) continue;
+        const category = cmd.config.category?.toUpperCase() || "GENERAL";
+        if (category === categoryArg) {
+          commandsInCategory.push({ name });
+        }
+      }
 
-    // GIF URLs
-    const gifURLs = [
-      "https://i.imgur.com/ejqdK51.gif",
-      "https://i.imgur.com/ltIztKe.gif",
-      "https://i.imgur.com/5oqrQ0i.gif",
-      "https://i.imgur.com/qf2aZH8.gif",
-      "https://i.imgur.com/3QzYyye.gif",
-      "https://i.imgur.com/ffxzucB.gif",
-      "https://i.imgur.com/3QSsSzA.gif",
-      "https://i.imgur.com/Ih819LH.gif"
-    ];
+      if (commandsInCategory.length === 0) {
+        return replyWithAutoUnsend(`❌ No commands found in category: ${categoryArg}`);
+      }
 
-    // pick random gif
-    const randomGifURL = gifURLs[Math.floor(Math.random() * gifURLs.length)];
-    const gifFolder = path.join(__dirname, "cache");
-    if (!fs.existsSync(gifFolder)) fs.mkdirSync(gifFolder, { recursive: true });
-    const gifName = path.basename(randomGifURL);
-    const gifPath = path.join(gifFolder, gifName);
+      let replyMsg = this.langs.en.helpHeader.replace(/{total}/g, commandsInCategory.length)
+                                           .replace(/{prefix}/g, prefix);
+      replyMsg += this.langs.en.categoryHeader.replace(/{category}/g, categoryArg);
 
-    // download if not exists
-    if (!fs.existsSync(gifPath)) {
-      await downloadGif(randomGifURL, gifPath);
-    }
-
-    // Single command detail
-    if (args[0]) {
-      const query = args[0].toLowerCase();
-      const cmd =
-        allCommands.get(query) ||
-        [...allCommands.values()].find((c) => (c.config.aliases || []).includes(query));
-      if (!cmd) return message.reply(`❌ Command "${query}" not found.`);
-
-      const {
-        name,
-        version,
-        author,
-        guide,
-        category,
-        shortDescription,
-        longDescription,
-        aliases
-      } = cmd.config;
-
-      const desc =
-        typeof longDescription === "string"
-          ? longDescription
-          : longDescription?.en || shortDescription?.en || shortDescription || "No description";
-
-      const usage =
-        typeof guide === "string"
-          ? guide.replace(/{pn}/g, prefix)
-          : guide?.en?.replace(/{pn}/g, prefix) || `${prefix}${name}`;
-
-      return message.reply({
-        body:
-          `☠️ 𝗖𝗢𝗠𝗠𝗔𝗡𝗗 𝗜𝗡𝗙𝗢 ☠️\n\n` +
-          `➥ Name: ${name}\n` +
-          `➥ Category: ${category || "Uncategorized"}\n` +
-          `➥ Description: ${desc}\n` +
-          `➥ Aliases: ${aliases?.length ? aliases.join(", ") : "None"}\n` +
-          `➥ Usage: ${usage}\n` +
-          `➥ Author: ${author || "Unknown"}\n` +
-          `➥ Version: ${version || "1.0"}`,
-        attachment: fs.createReadStream(gifPath)
+      commandsInCategory.sort((a, b) => a.name.localeCompare(b.name)).forEach(cmd => {
+        replyMsg += this.langs.en.commandItem.replace(/{name}/g, cmd.name);
       });
+
+      replyMsg += this.langs.en.categoryFooter;
+      replyMsg += this.langs.en.helpFooter.replace(/{prefix}/g, prefix);
+
+      return replyWithAutoUnsend(replyMsg);
     }
 
-    // Format all commands
-    const formatCommands = (cmds) =>
-      cmds.sort().map((cmd) => `│ ∘ ${cmd}`).join("\n");
+    if (!commandName || commandName === 'all') {
+      const categories = new Map();
 
-    let msg = `╭━ 🎯 𝑪𝑶𝑴𝑴𝑨𝑵𝑫𝑺 ━╮\n`;
-    const sortedCategories = Object.keys(categories).sort();
-    for (const cat of sortedCategories) {
-      const emoji = emojiMap[cat] || "➥";
-      msg += `\n${emoji} ${cat.toUpperCase()}\n`;
-      msg += `${formatCommands(categories[cat])}\n`;
+      for (const [name, cmd] of commands) {
+        if (cmd.config.role > 1 && role < cmd.config.role) continue;
+
+        const category = cmd.config.category?.toUpperCase() || "GENERAL";
+        if (!categories.has(category)) {
+          categories.set(category, []);
+        }
+        categories.get(category).push({ name });
+      }
+
+      const sortedCategories = [...categories.keys()].sort();
+      let totalCommands = 0;
+      let replyMsg = this.langs.en.helpHeader
+                        .replace(/{total}/g, [...commands].filter(([_, cmd]) => (cmd.config.role <= role)).length)
+                        .replace(/{prefix}/g, prefix);
+
+      for (const category of sortedCategories) {
+        const commandsInCategory = categories.get(category).sort((a, b) => a.name.localeCompare(b.name));
+        totalCommands += commandsInCategory.length;
+
+        replyMsg += this.langs.en.categoryHeader.replace(/{category}/g, category);
+
+        commandsInCategory.forEach(cmd => {
+          replyMsg += this.langs.en.commandItem.replace(/{name}/g, cmd.name);
+        });
+
+        replyMsg += this.langs.en.categoryFooter;
+      }
+
+      replyMsg += this.langs.en.helpFooter.replace(/{prefix}/g, prefix);
+
+      return replyWithAutoUnsend(replyMsg);
     }
-    msg += `\n╰➤ Use: ${prefix}help [command name] for details`;
 
-    return message.reply({
-      body: msg,
-      attachment: fs.createReadStream(gifPath)
-    });
+    // Show detailed info for a specific command
+    let cmd = commands.get(commandName) || commands.get(aliases.get(commandName));
+    if (!cmd) {
+      return replyWithAutoUnsend(this.langs.en.commandNotFound.replace(/{command}/g, commandName));
+    }
+
+    const config = cmd.config;
+    const description = config.description?.en || config.description || "No description";
+    const aliasesList = config.aliases?.join(", ") || this.langs.en.doNotHave;
+    const category = config.category?.toUpperCase() || "GENERAL";
+
+    let roleText;
+    switch(config.role) {
+      case 1: roleText = this.langs.en.roleText1; break;
+      case 2: roleText = this.langs.en.roleText2; break;
+      default: roleText = this.langs.en.roleText0;
+    }
+
+    let guide = config.guide?.en || config.usage || config.guide || "No usage guide available";
+    if (typeof guide === "object") guide = guide.body;
+    guide = guide.replace(/\{prefix\}/g, prefix).replace(/\{name\}/g, config.name).replace(/\{pn\}/g, prefix + config.name);
+
+    let replyMsg = this.langs.en.commandInfo
+      .replace(/{name}/g, config.name)
+      .replace(/{description}/g, description)
+      .replace(/{category}/g, category)
+      .replace(/{aliases}/g, aliasesList)
+      .replace(/{version}/g, config.version)
+      .replace(/{role}/g, roleText)
+      .replace(/{countDown}/g, config.countDown || 1)
+      .replace(/{usePrefix}/g, typeof config.usePrefix === "boolean" ? (config.usePrefix ? "✅ Yes" : "❌ No") : "❓ Unknown")
+      .replace(/{author}/g, config.author || "Unknown");
+
+    replyMsg += "\n" + this.langs.en.usageHeader +
+                this.langs.en.usageBody.replace(/{usage}/g, guide.split("\n").join("\n┃ ")) +
+                this.langs.en.usageFooter;
+
+    return replyWithAutoUnsend(replyMsg);
   }
 };
-
-// helper to download GIF
-function downloadGif(url, dest) {
-  return new Promise((resolve, reject) => {
-    const file = fs.createWriteStream(dest);
-    https.get(url, (res) => {
-      if (res.statusCode !== 200) {
-        fs.unlink(dest, () => {});
-        return reject(new Error(`Failed to download '${url}' (${res.statusCode})`));
-      }
-      res.pipe(file);
-      file.on("finish", () => file.close(resolve));
-    }).on("error", (err) => {
-      fs.unlink(dest, () => {});
-      reject(err);
-    });
-  });
-}
