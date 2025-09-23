@@ -2,7 +2,7 @@ const axios = require("axios");
 
 module.exports = {
   config: {
-    name: "i",
+    name: "img",
     version: "1.2",
     author: "JARiF@Cock",
     countDown: 5,
@@ -22,7 +22,7 @@ module.exports = {
     try {
       const text = args.join(" ");
       if (!text) {
-        return message.reply("⚠️ Please provide a prompt.");
+        return message.reply("⚠ Please provide a prompt.");
       }
 
       let prompt, quantity;
@@ -30,15 +30,15 @@ module.exports = {
         [prompt, quantity] = text.split("|").map(str => str.trim());
         quantity = parseInt(quantity);
         if (isNaN(quantity) || quantity < 1 || quantity > 10) {
-          return message.reply("⚠️ Quantity must be a number between 1 and 10.");
+          return message.reply("⚠ Quantity must be a number between 1 and 10.");
         }
       } else {
         prompt = text;
         quantity = 4; // default quantity
       }
 
-      api.setMessageReaction("⏳", event.messageID, () => {}, true);
-      const waitingMessage = await message.reply(`✅ | Generating ${quantity} image(s)...`);
+      api.setMessageReaction("🕛", event.messageID, () => {}, true);
+      const waitingMessage = await message.reply(`🕛 | HERE'S YOUR${quantity} image(s)...`);
 
       const imageUrls = [];
 
@@ -48,8 +48,7 @@ module.exports = {
         const res = await axios.get(`https://www.ai4chat.co/api/image/generate`, {
           params: {
             prompt,
-            aspect_ratio:ratio
-
+            aspect_ratio: ratio
           }
         });
 
