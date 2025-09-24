@@ -1,53 +1,69 @@
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+
 module.exports = {
-  config: {
-    name: "owner",
-    aliases: ["info"],
-    author: "𝗠𝗢𝗗𝗜𝗙𝗔𝗬 𝗬𝗘𝗔𝗦𝗜𝗡",
-    role: 0,
-    shortDescription: "Displays admin info",
-    longDescription: "Shows info about the bot owner/admin",
-    category: "𝗔𝗗𝗠𝗜𝗡 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡",
-    guide: "{pn}"
-  },
+config: {
+  name: "owner",
+  aurthor:"Tokodori",// Convert By Goatbot Tokodori 
+   role: 0,
+  shortDescription: " ",
+  longDescription: "",
+  category: "admin",
+  guide: "{pn}"
+},
 
-  onStart: async function ({ api, event }) {
-    try {
-      const message = `
-➪▭▭▭▭▭▭▭▭▭▭▭▭▭✰
-         👑  𝗢𝗪𝗡𝗘𝗥 𝗜𝗡𝗙𝗢  👑
-➪▭▭▭▭▭▭▭▭▭▭▭▭▭✰
-➪▭▭▭▭▭▭▭▭▭▭▭▭▭✰
-🧑‍💼 𝗡𝗔𝗠𝗘         : 𝗬𝗘𝗔𝗦𝗜𝗡   
-➪▭▭▭▭▭▭▭▭▭▭▭▭▭✰
-🚹 𝗚𝗘𝗡𝗗𝗘𝗥       : 𝗠𝗔𝗟𝗘  
-➪▭▭▭▭▭▭▭▭▭▭▭▭▭✰
-💘 𝗥𝗘𝗟𝗔𝗧𝗜𝗢𝗡𝗦𝗛𝗜𝗣 : 𝗦𝗜𝗡𝗚𝗟𝗘 😞 
-➪▭▭▭▭▭▭▭▭▭▭▭▭▭✰ 
-🎂 𝗔𝗚𝗘          : 𝟭𝟵
-➪▭▭▭▭▭▭▭▭▭▭▭▭▭✰
-🕌 𝗥𝗘𝗟𝗜𝗚𝗜𝗢𝗡     : 𝗜𝗦𝗟𝗔𝗠  
-➪▭▭▭▭▭▭▭▭▭▭▭▭▭✰
-🏡 𝗔𝗗𝗗𝗥𝗘𝗦𝗦      : 𝗕𝗔𝗡𝗚𝗟𝗔𝗗𝗘𝗦𝗛
-           𝗖𝗢𝗠𝗜𝗟𝗟𝗔 - 𝗗𝗛𝗔𝗞𝗔
-➪▭▭▭▭▭▭▭▭▭▭▭▭▭✰
-📱 𝗧𝗜𝗞𝗧𝗢𝗞       : 𝗜𝘁𝘀_𝗺𝗲_𝘁𝘂𝗳𝗮𝗻01  
-➪▭▭▭▭▭▭▭▭▭▭▭▭▭✰
-📵 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣     : 𝗗𝗜𝗠𝗨 𝗡𝗔
-➪▭▭▭▭▭▭▭▭▭▭▭▭▭✰
-🌐 𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞     : https://www.facebook.com/profile.php?id=100003608645652
-➪▭▭▭▭▭▭▭▭▭▭▭▭▭✰`;
+  onStart: async function ({ api, event }) {
+  try {
+    const ownerInfo = {
+      name: '𓆩⟡ 👾𝗔𝗖𝗦 𝗦𝗜͜͡𝗬𝗔𝗠 𝗕𝗥𝗢 ⟡𓆪⚠️',
+      gender: '𝐌𝐀𝐋𝐄👾🌪️',
+      
+      
+      
+      nick: '𝗟𝗘͜͡𝗔𝗗𝗘𝗥 𝗩𝗔͜͡𝗜 ⚠️🏴‍☠'
+    };
 
-      await api.sendMessage({
-        body: message
-      }, event.threadID, event.messageID);
+    const bold = 'https://files.catbox.moe/ncndl1.mp4'; // Replace with your Google Drive videoid link https://drive.google.com/uc?export=download&id=here put your video id
 
-      if (event.body.toLowerCase().includes('ownerinfo')) {
-        api.setMessageReaction('🖤', event.messageID, (err) => {}, true);
-      }
+    const tmpFolderPath = path.join(__dirname, 'tmp');
 
-    } catch (error) {
-      console.error('Error in ownerinfo command:', error);
-      return api.sendMessage('Something went wrong while processing the command.', event.threadID);
-    }
-  },
+    if (!fs.existsSync(tmpFolderPath)) {
+      fs.mkdirSync(tmpFolderPath);
+    }
+
+    const videoResponse = await axios.get(bold, { responseType: 'arraybuffer' });
+    const videoPath = path.join(tmpFolderPath, 'owner_video.mp4');
+
+    fs.writeFileSync(videoPath, Buffer.from(videoResponse.data, 'binary'));
+
+    const response = ` 
+╭────────────◊
+├─⦿ 𝐁𝐨𝐭 & 𝐎𝐰𝐧𝐞𝐫 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧 
+├─⦿ 𝐍𝐚𝐦𝐞: ${ownerInfo.name}
+├─⦿ 𝗩𝗶͜͡𝗿𝘂𝘀 𝗔𝗹𝗲𝗿𝘁⚡📨
+├─⦿ 𝗢𝗽𝗽͜͡𝘀𝘀𝘀 ....... 🎭
+├─⦿ 𝗙𝗮𝘃𝗼𝗿𝗶𝘁𝗲 𝘄𝗼𝗿𝗱 : 𝗘𝗿𝗼𝗼𝗿 👑📨🌪️
+├─⦿ 𝗛𝗼𝗯𝗯𝘆 :  𝗛𝗮͜͡𝟯𝗸𝗶𝗻𝗴 🎭
+├─⦿ ⚡ 𝗪͟𝗛͟͠𝗢  𝗜͟𝗔͟͠𝗠  𝘠͟𝗼͟͠𝘂  𝗵͟𝗮͟͠𝘃𝗲  𝗻͟𝗼͟͠ 𝗶͟𝗱͟͠𝗲𝗮 📨🍷
+├─⦿ 🌪️𝗳͟𝗮͟͠𝘁𝗵𝗲𝗿  𝗼͟𝗳  𝗻͟𝗼͟͠𝗯𝗶𝗻 ⚡
+├─⦿ ⁷¹³𝗟𝗢𝗔𝗗𝗜𝗡𝗚...........................👾
+├─⦿ 𝐆𝐞𝐧𝐝𝐞𝐫:  ${ownerInfo.gender}
+├─⦿ 𝐍𝐢𝐜𝐤 : ${ownerInfo.nick}  
+╰────────────◊ 
+`;
+
+    await api.sendMessage({
+      body: response,
+      attachment: fs.createReadStream(videoPath)
+    }, event.threadID, event.messageID);
+
+    if (event.body.toLowerCase().includes('ownerinfo')) {
+      api.setMessageReaction('🚀', event.messageID, (err) => {}, true);
+    }
+  } catch (error) {
+    console.error('Error in ownerinfo command:', error);
+    return api.sendMessage('An error occurred while processing the command.', event.threadID);
+  }
+},
 };
