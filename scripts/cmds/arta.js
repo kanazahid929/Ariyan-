@@ -4,14 +4,14 @@ const fs = require("fs-extra");
 module.exports = {
   config: {
     name: "arta",
-    aliases: [],
+    aliases: [arta],
     version: "1.0",
     author: "nexo_here",
     countDown: 10,
     role: 0,
     shortDescription: "Generate image using ARTA AI",
     longDescription: "Generate beautiful images with prompt and optional model using ARTA API",
-    category: "AI-IMAGE",
+    category: "image generator",
     guide: {
       en: "{pn} <prompt> | <model (optional)>\nExample: {pn} A cyberpunk city | graffiti"
     }

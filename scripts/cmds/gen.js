@@ -11,7 +11,7 @@ countDown: 5,
 role: 0,
 shortDescription: { en: "Generate image using prompt" },
 longDescription: { en: "Generate a new image based on your prompt." },
-category: "image",
+category: "image generator",
 guide: { en: "{p}gen [prompt]" }
 },
 

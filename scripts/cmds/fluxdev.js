@@ -9,7 +9,7 @@ hasPermission: 0,
 credits: "nexo_here",
 description: "Generate image using FluxDev API",
 usePrefix: true,
-commandCategory: "AI-IMAGE",
+commandCategory: "image generator",
 usages: "[prompt]",
 cooldowns: 5
 };

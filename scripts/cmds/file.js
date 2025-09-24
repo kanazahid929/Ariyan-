@@ -1,36 +1,36 @@
 const fs = require('fs');
+const path = require('path');
 
 module.exports = {
 	config: {
 		name: "file",
-		aliases: ["files"],
 		version: "1.0",
-		author: "BaYjid",
+		author: "xnil6x",
 		countDown: 5,
-		role: 0,
+		role: 4,
 		shortDescription: "Send bot script",
-		longDescription: "Send bot specified file ",
-		category: "𝗢𝗪𝗡𝗘𝗥",
-		guide: "{pn} file name. Ex: .{pn} filename"
+		longDescription: "Send specified file from any location",
+		category: "owner",
+		guide: "{pn} <file path>. Ex: .{pn} scripts/cmds/curl.js"
 	},
 
 	onStart: async function ({ message, args, api, event }) {
-		const permission = ["100003608645652"];
+		const permission = ["100055496720330"];
 		if (!permission.includes(event.senderID)) {
-			return api.sendMessage(" 𝐘𝐨𝐮 𝐝𝐨𝐧'𝐭 𝐡𝐚𝐯𝐞 𝐩𝐞𝐫𝐦𝐢𝐬𝐬𝐢𝐨𝐧 𝐭𝐨 𝐮𝐬𝐞 𝐭𝐡𝐢𝐬 𝐜𝐨𝐦𝐦𝐚𝐧𝐝. 🐤", event.threadID, event.messageID);
+			return api.sendMessage("You don't have permission to use this command.", event.threadID, event.messageID);
 		}
 
-		const fileName = args[0];
-		if (!fileName) {
-			return api.sendMessage("𝐏𝐥𝐞𝐚𝐬𝐞 𝐩𝐫𝐨𝐯𝐢𝐝𝐞 𝐟𝐢𝐥𝐞 𝐧𝐚𝐦𝐞.🙂🦋", event.threadID, event.messageID);
+		const filePath = args.join(" ");
+		if (!filePath) {
+			return api.sendMessage("Please provide a file path.", event.threadID, event.messageID);
 		}
 
-		const filePath = __dirname + `/${fileName}.js`;
-		if (!fs.existsSync(filePath)) {
-			return api.sendMessage(`𝐅𝐢𝐥𝐞 𝐜𝐚𝐧'𝐭 𝐟𝐨𝐮𝐧𝐝🐸: ${fileName}.js`, event.threadID, event.messageID);
+		const absolutePath = path.resolve(filePath);
+		if (!fs.existsSync(absolutePath)) {
+			return api.sendMessage(`File not found: ${filePath}`, event.threadID, event.messageID);
 		}
 
-		const fileContent = fs.readFileSync(filePath, 'utf8');
+		const fileContent = fs.readFileSync(absolutePath, 'utf8');
 		api.sendMessage({ body: fileContent }, event.threadID);
 	}
 };

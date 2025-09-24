@@ -11,7 +11,7 @@ module.exports = {
     role: 0,
     shortDescription: "Generate AI image using FluxAWS API",
     longDescription: "Use prompt and ratio to generate stunning AI images using fluxaws",
-    category: "AI-IMAGE",
+    category: "image generator",
     guide: {
       en: "{pn} <prompt> | <ratio>\nExample: {pn} a cat with glasses | 1.2"
     }
