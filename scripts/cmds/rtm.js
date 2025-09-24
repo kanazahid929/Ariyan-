@@ -3,7 +3,7 @@ const { bold } = require("fontstyles");
 
 module.exports = {
   config: {
-    name: 'uptime',
+    name: 'rtm',
     aliases: ['stats', 'status', 'system', 'rtm'],
     version: '1.5',
      usePrefix: false,
