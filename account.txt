@@ -1,76 +1,126 @@
-THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩
-
-
-
-
-
-THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩THIS ACCOUNT HACKED BY ACS SIYAM🚩💥
-
-
-WHO I AM ?🚩 YOUT BIRTH FATHER!!🚩
+[{
+	"key": "datr",
+	"value": "f_SUaHwbdZSpW0i5x6CEMfkR",
+	"path": "/",
+	"hostOnly": false,
+	"domain": ".facebook.com",
+	"creation": "2025-09-26T18:26:53.656Z",
+	"lastAccessed": "2025-09-26T18:26:53.656Z"
+	},
+	{
+	"key": "sb",
+	"value": "f_SUaEO-AmcbbqOkKg3mXz0g",
+	"path": "/",
+	"hostOnly": false,
+	"domain": ".facebook.com",
+	"creation": "2025-09-26T18:26:53.656Z",
+	"lastAccessed": "2025-09-26T18:26:53.656Z"
+	},
+	{
+	"key": "m_pixel_ratio",
+	"value": "1.875",
+	"path": "/",
+	"hostOnly": false,
+	"domain": ".facebook.com",
+	"creation": "2025-09-26T18:26:53.656Z",
+	"lastAccessed": "2025-09-26T18:26:53.656Z"
+	},
+	{
+	"key": "ps_l",
+	"value": "1",
+	"path": "/",
+	"hostOnly": false,
+	"domain": ".facebook.com",
+	"creation": "2025-09-26T18:26:53.656Z",
+	"lastAccessed": "2025-09-26T18:26:53.656Z"
+	},
+	{
+	"key": "ps_n",
+	"value": "1",
+	"path": "/",
+	"hostOnly": false,
+	"domain": ".facebook.com",
+	"creation": "2025-09-26T18:26:53.656Z",
+	"lastAccessed": "2025-09-26T18:26:53.656Z"
+	},
+	{
+	"key": "pas",
+	"value": "100001609895456%3Abj8EACAzwl%2C100000667448603%3AkxBfqYoAMr",
+	"path": "/",
+	"hostOnly": false,
+	"domain": ".facebook.com",
+	"creation": "2025-09-26T18:26:53.656Z",
+	"lastAccessed": "2025-09-26T18:26:53.656Z"
+	},
+	{
+	"key": "wd",
+	"value": "385x854",
+	"path": "/",
+	"hostOnly": false,
+	"domain": ".facebook.com",
+	"creation": "2025-09-26T18:26:53.656Z",
+	"lastAccessed": "2025-09-26T18:26:53.656Z"
+	},
+	{
+	"key": "locale",
+	"value": "en_US",
+	"path": "/",
+	"hostOnly": false,
+	"domain": ".facebook.com",
+	"creation": "2025-09-26T18:26:53.656Z",
+	"lastAccessed": "2025-09-26T18:26:53.656Z"
+	},
+	{
+	"key": "vpd",
+	"value": "v1%3B683x384x1.875",
+	"path": "/",
+	"hostOnly": false,
+	"domain": ".facebook.com",
+	"creation": "2025-09-26T18:26:53.656Z",
+	"lastAccessed": "2025-09-26T18:26:53.656Z"
+	},
+	{
+	"key": "c_user",
+	"value": "100000667448603",
+	"path": "/",
+	"hostOnly": false,
+	"domain": ".facebook.com",
+	"creation": "2025-09-26T18:26:53.656Z",
+	"lastAccessed": "2025-09-26T18:26:53.656Z"
+	},
+	{
+	"key": "xs",
+	"value": "3%3ALbC7Wn8Wf_FR3A%3A2%3A1758905167%3A-1%3A-1",
+	"path": "/",
+	"hostOnly": false,
+	"domain": ".facebook.com",
+	"creation": "2025-09-26T18:26:53.656Z",
+	"lastAccessed": "2025-09-26T18:26:53.656Z"
+	},
+	{
+	"key": "fr",
+	"value": "0fxFB1fQ4I9dhhNSn.AWdAZNYYbIelwv4nD0NKbXYTbryLVU04Rzn7Z3s9k22yotxhjQI.BolPR_..AAA.0.0.Bo1trk.AWeLj3gv3AOXNHdjFM2LMs_DlAI",
+	"path": "/",
+	"hostOnly": false,
+	"domain": ".facebook.com",
+	"creation": "2025-09-26T18:26:53.656Z",
+	"lastAccessed": "2025-09-26T18:26:53.656Z"
+	},
+	{
+	"key": "fbl_st",
+	"value": "100629407%3BT%3A29315186",
+	"path": "/",
+	"hostOnly": false,
+	"domain": ".facebook.com",
+	"creation": "2025-09-26T18:26:53.656Z",
+	"lastAccessed": "2025-09-26T18:26:53.656Z"
+	},
+	{
+	"key": "wl_cbv",
+	"value": "v2%3Bclient_version%3A2936%3Btimestamp%3A1758911204",
+	"path": "/",
+	"hostOnly": false,
+	"domain": ".facebook.com",
+	"creation": "2025-09-26T18:26:53.656Z",
+	"lastAccessed": "2025-09-26T18:26:53.656Z"
+	}]
