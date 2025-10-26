@@ -4,9 +4,9 @@ const path = require("path");
 
 module.exports = {
 	config: {
-		name: "acs",
+		name: "master",
 		version: "1.0",
-		author: "Gok",
+		author: "Gosk",
 		countDown: 5,
 		role: 2,
 		shortDescription: "sarcasm",
@@ -19,16 +19,16 @@ module.exports = {
 	onChat: async function ({ event, message }) {
 		if (event.body && event.body.toLowerCase() === "acs") {
 			const mediaLinks = [
-				"https://files.catbox.moe/mslh6o.mp4",
-				"https://files.catbox.moe/4gxsv5.mp4",
-				"https://files.catbox.moe/87l3sr.mp4",
-				"https://files.catbox.moe/3bwg8t.mp4",
-				"https://files.catbox.moe/7inhxp.mp4",
-				"https://files.catbox.moe/o5exmv.mp4",
-				"https://files.catbox.moe/isirrv.mp4",
-				"https://files.catbox.moe/948ocd.mp4",
-				"https://files.catbox.moe/58pxep.mp4",
-				"https://files.catbox.moe/1jjx82.mp4"
+				"https://files.catbox.moe/b4q5np.mp4",
+				"https://files.catbox.moe/b4q5np.mp4",
+				"https://files.catbox.moe/b4q5np.mp4",
+				"https://files.catbox.moe/b4q5np.mp4",
+				"https://files.catbox.moe/b4q5np.mp4",
+				"https://files.catbox.moe/dcs0f8.mp4",
+				"https://files.catbox.moe/dcs0f8.mp4",
+				"https://files.catbox.moe/a6v1w7.mp4",
+				"https://files.catbox.moe/a6v1w7.mp4",
+				"https://files.catbox.moe/a6v1w7.mp4"
 			];
 
 			const randomLink = mediaLinks[Math.floor(Math.random() * mediaLinks.length)];
@@ -40,7 +40,7 @@ module.exports = {
 				fs.writeFileSync(filePath, Buffer.from(response.data));
 
 				await message.reply({
-					body: "🎭𝐀𝐓𝐓𝐀𝐂𝐊-𝐂𝐘𝐁𝐄𝐑-𝐒𝐄𝐂𝐔𝐑𝐈𝐓𝐘",
+					body: "»̶̶͓͓̽̽̽𝗩𝗔𝗥𝗧𝗨𝗔𝗟𝄞⋆⃝𓊈‎𝗔𝗟𝗟༄𝗠𝗔𝗦𝗧𝗘𝗥𝗠𝗜𝗡𝗗༆✾❥𝗕𝗢𝗫༄🥰🥰",
 					attachment: fs.createReadStream(filePath)
 				});
 			} catch (err) {
