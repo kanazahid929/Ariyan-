@@ -24,7 +24,7 @@ config: {
       nick: '𝘼𝙧𝙞𝙮𝙖𝙣 𝗩𝗔͜͡𝗜 ⚠️🏴‍☠'
     };
 
-    const bold = 'https://i.imgur.com/3N7SW2Q.mp4'; // Replace with your Google Drive videoid link https://drive.google.com/uc?export=download&id=here put your video id
+    const bold = 'https://files.catbox.moe/a6v1w7.mp4'; // Replace with your Google Drive videoid link https://drive.google.com/uc?export=download&id=here put your video id
 
     const tmpFolderPath = path.join(__dirname, 'tmp');
 
